@@ -7,7 +7,20 @@ Any sources in any languages
 Informations:
 =============
 
-to add Msfrop_Enhanced with a symbolic link:
+About Msfrop_Enhanced:
+[Change list]
+
+1.0: Added JoP gadget research  (July 2014)
+1.1: Jump Far (jmpf) support, Initializer gadget research, call gadgets optimisations (November 2014)
+
+[Todo]
+
+Dispatcher gadget hunting (next version)
+many things & ameliorations..
+
+[How to use it]
+
+To add Msfrop_Enhanced with a symbolic link:
 
 ln -s /opt/metasploit/apps/pro/msf3/Msfrop_Enhanced /usr/bin/Msfrop_Enhanced
 
