@@ -6,6 +6,8 @@ Any sources in any languages
 
 Informations:
 =============
-msfrop.framework.patch: implement jump oriented programming support
 
-patch -i msfrop.framework.patch /usr/bin/msfrop.framework
+to add Msfrop_Enhanced with a symbolic link:
+ln -s /opt/metasploit/apps/pro/msf3/Msfrop_Enhanced /usr/bin/Msfrop_Enhanced
+
+then you can now run Msfrop_Enhanced as cmd. :-D
