@@ -9,10 +9,10 @@ About Msfrop_Enhanced project
 
 Msfrop-Enhanced is a msfrop by Offensive Security with Jump Oriented Programming implementation.
 This tool is optimized for JOP gadgets hunting and will be improved when time permits me.
+
 Don't hesitate to contact me for any idea or problems.
 
-
-					        				[Change log]
+										[Change log]
 
 
 *1.0*: Added JoP gadget research  (July 2014)
