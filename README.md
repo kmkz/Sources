@@ -7,16 +7,19 @@ Any sources in any languages
 About Msfrop_Enhanced project
 =============================
 
-[Change list]
+Msfrop-Enhanced is a msfrop by Offensive Security with Jump Oriented Prgramming support.
 
-*1.0:* Added JoP gadget research  (July 2014)
 
-1.1: Jump Far (jmpf) support, Initializer gadget research, call gadgets optimisations (November 2014)
+[Change log]
+
+*1.0*: Added JoP gadget research  (July 2014)
+
+*1.1*: Jump Far (jmpf) support, Initializer gadget research, call gadgets optimisations (November 2014)
 
 [Todo]
 
-Dispatcher gadget hunting (next version)
-many things & ameliorations..
+-Dispatcher gadget hunting (next version)
+-many things & ameliorations..
 
 [How to use it]
 
