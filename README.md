@@ -1,7 +1,9 @@
 Sources
 =======
 
-Any sources in any languages
+Here you can find any sources in any languages..
+
+and a JOP project named "Msfrop_Enhanced" which is an msfrop tool evolution.
 
 
 About Msfrop_Enhanced project
