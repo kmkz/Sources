@@ -10,6 +10,7 @@
 # Jop Gadgets support by Bourbon Jean-marie (kmkz):
 # 	[1.0] Added JoP gadget research  (July 2014)
 # 	[1.1] Jump Far (jmpf) support, Initializer gadget research, call gadgets optimisations (November 2014)
+#	[1.2] Basic dispatcher (jop) gadget research  and optimisations (August 2015)
 
 
 msfbase = __FILE__
@@ -64,6 +65,10 @@ opt.on('-I', '--init', 'Search for initializer gadget (intel syntax)') do
 	opts[:init] = true
 end
 
+opt.on('-D', '--dispatch', 'Search for basic dispatcher gadget (intel syntax)') do 
+	opts[:dispatch] = true
+end
+
 opt.on('-n', '--nocolor', 'Disable color. Useful for piping to other tools like the less and more commands') do
 	color = false
 end
@@ -99,7 +104,7 @@ if opts.empty? and (ARGV.empty? or ARGV.nil?)
 end
 
 # Set defaults as a non verbose ROP gadgets research:
-opts[:depth] ||= 7
+opts[:depth] ||= 8
 gadgets = []
 
 if opts[:import].nil?
@@ -130,9 +135,9 @@ files.each do |file|
 		ropbuilder.print_msg("Collecting Jump Oriented gadgets from %bld%cya#{file}%clr\n", color)
 		
 		# Here you can add new JoP gadgets here:
-		jmp   = ropbuilder.collect(opts[:depth], "\xeb") # \xeb jmp
-		jmpf  = ropbuilder.collect(opts[:depth], "\xea") # \xea jmp far 
-		call   = ropbuilder.collect(opts[:depth], "\xe8") # \xe8 call (\xff not so fun..)
+		jmp   = ropbuilder.collect(opts[:depth], "\xeb") # \xeb= jmp
+		jmpf  = ropbuilder.collect(opts[:depth], "\xea") # \xea= jmp far 
+		call   = ropbuilder.collect(opts[:depth], "\xe8") # \xe8= call (\xff not so fun..)
 		
 		ropbuilder.print_msg("Found %grn#{jmp.count + jmpf.count + call.count}%clr Jump Oriented gadgets\n\n", color)
 		
@@ -141,9 +146,18 @@ files.each do |file|
 		ropbuilder = Rex::RopBuilder::RopCollect.new(file)
 		ropbuilder.print_msg("Collecting Initializer gadget from %bld%cya#{file}%clr\n", color)
 		
-		popa   = ropbuilder.collect(opts[:depth], "\x61") # \x61 popa(d)
+		popa   = ropbuilder.collect(opts[:depth], "\x61") # \x61= popa(d)
 	
 		ropbuilder.print_msg("Found %grn#{popa.count}%clr Jump Oriented gadgets\n\n", color)
+		
+	elsif opts[:dispatch]
+		addjmp = []
+		ropbuilder = Rex::RopBuilder::RopCollect.new(file)
+		ropbuilder.print_msg("Collecting basic Dispatcher gadget from %bld%cya#{file}%clr\n", color)
+		
+		addjmp   = ropbuilder.collect(opts[:depth], "\xeb\x05") # \xeb= jmp +  \x05= add eax,value   (little endian)
+	
+		ropbuilder.print_msg("Found %grn#{addjmp.count}%clr Jump Oriented gadgets\n\n", color)
 		
 	else
 		# Return Oriented:
@@ -154,9 +168,11 @@ files.each do |file|
 		ret  = ropbuilder.collect(opts[:depth], "\xc3")   # \xc3 ret
 		ropbuilder.print_msg("Found %grn#{ret.count + retn.count}%clr Return Oriented gadgets\n\n", color)
 	end
+	
 				#######################################
 				#	Compile a list of all ROP & JOP gadgets from all files     #
 				#######################################
+	
 				
 	# Jop gadgets option:
 	if opts[:jop]
@@ -201,8 +217,20 @@ files.each do |file|
 				ropbuilder.print_msg("#{gadget[:disasm]}\n", color)
 			end
 		end
-	#end
-	#  Rop gadgets:
+	elsif opts[:dispatch]
+		
+		# Dispatcher loop:
+		addjmp.each do |gadget|
+			gadgets << gadget
+			
+			if opts[:verbose]
+				ropbuilder.print_msg("#{gadget[:file]} basic dispatcher gadget: %bld%grn#{gadget[:address]}%clr\n", color)
+				ropbuilder.print_msg("#{gadget[:disasm]}\n", color)
+			end
+		end
+	###########
+	#  Rop gadgets #
+	###########
 	else
 		ret.each do |gadget|
 			gadgets << gadget
