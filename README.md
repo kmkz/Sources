@@ -21,12 +21,14 @@ Don't hesitate to contact me for any idea or problems.
 
 *1.1*: Jump Far (jmpf) support, Initializer gadget research, call gadgets optimisations (November 2014)
 
+*1.2*: Basic dispatcher (add + jmp) gadget research and optimisations (August 2015)
+
 			
 											[Todo]	
 
--Dispatcher gadget hunting (next version)
+-Advanced dispatcher gadget hunting (next version)
 
--many things & ameliorations..
+-Many things & ameliorations..
 
 
 										[How to use it]
