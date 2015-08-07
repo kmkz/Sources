@@ -1,9 +1,9 @@
-#!/usr/bin/env ruby
+#!/opt/metasploit/ruby/bin/framework-ruby
 # -*- coding: binary -*-
 #
 # $Id$
 #
-#  This tool will collect, export, and import ROP and JOP gadgets1
+# This tool will collect, export, and import ROP and JOP gadgets1
 # from various file formats (PE, ELF, Macho)
 # $Revision$
 #
