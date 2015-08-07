@@ -28,6 +28,8 @@ Don't hesitate to contact me for any idea or problems.
 
 -Advanced dispatcher gadget hunting (next version)
 
+-Stack pivots gadgets (next version)
+
 -Many things & ameliorations..
 
 
