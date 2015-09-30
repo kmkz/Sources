@@ -3,7 +3,7 @@
 from pwn import *
 
 # Binary name, var to overwrite & data to overwrite:
-check=0xbffffbf8
+check=0xbffffb00
 overwrite=0xdeadbeef
 binary='./binfile'
 
