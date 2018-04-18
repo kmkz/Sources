@@ -3,6 +3,14 @@
 Original publication:
 https://subt0x11.blogspot.lu/2018/04/wmicexe-whitelisting-bypass-hacking.html
 
+Microsoft documentation:
+https://docs.microsoft.com/en-us/dotnet/standard/data/xml/xslt-stylesheet-scripting-using-msxsl-script
+
+Use-case/main objective:
+- Windows Script Host is disabled or blocked
+unconstrained script host bypass for Windows Defender Application Control 
+WMIC can invoke XSL (eXtensible Stylesheet Language) scripts, either locally or from a URL.
+
 Proof of concept based on C:\Windows\System32\wbem\texttable.xsl
 
 PoC examples:
