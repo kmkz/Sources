@@ -57,7 +57,7 @@ while (my $Reading = $Handle->getline()) {
 			
 			foreach my$Output(@Tab){
 				
-				if($Output=~/403/i){
+				if(($Output=~/403/) and not ($Output =~/isadmin/i)){
 				
 					print (colored"\n  [+] ",'bold yellow');
 					say "Authentication failed; trying next password\n";
@@ -69,7 +69,7 @@ while (my $Reading = $Handle->getline()) {
 						 $output->close;
 					}
 					last;
-				}else{
+				}elsif ($Output=~/isadmin/i){
 					say colored"[*] Password found using this payload: $Output !",'bold green';
 					exit;
 				}
