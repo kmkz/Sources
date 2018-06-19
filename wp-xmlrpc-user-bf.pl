@@ -1,6 +1,6 @@
 #!/usr/bin/perl -wU
 
-# WP PingBack/apmification attack password Brute Forcer (DIIIIRTY ! )
+# WP PingBack/Amplification attack password Brute Forcer (DIIIIRTY ! )
 
 use 5.010;
 use IO::File;
