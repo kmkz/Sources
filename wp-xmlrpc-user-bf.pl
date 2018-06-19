@@ -73,18 +73,13 @@ while (my $Reading = $Handle->getline()) {
 					$output->close;
 					}
 				}	
-
 			}
 		}
 }
-
 unlink("test.txt");
 
-CLOSE:
 print (colored"\n  [?] ",'bold blue');
 say "[-] Hope that you find something...";
-
-
 
 
 =info
