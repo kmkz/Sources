@@ -63,14 +63,14 @@ while (my $Reading = $Handle->getline()) {
 					exit;
 				}
 				else{
-				print (colored"\n  [+] ",'bold yellow');
-				say "Authentication failed ($pass); trying next password\n";
+					print (colored"\n  [+] ",'bold yellow');
+					say "Authentication failed ($pass); trying next password\n";
 				
-				foreach my $lol(@BF){
+					foreach my $lol(@BF){
 	
-					my $output = new IO::File(">test.txt");
-					print $output  $lol;
-					$output->close;
+						my $output = new IO::File(">test.txt");
+						print $output  $lol;
+						$output->close;
 					}
 				}	
 			}
@@ -80,7 +80,6 @@ unlink("test.txt");
 
 print (colored"\n  [?] ",'bold blue');
 say "[-] Hope that you find something...";
-
 
 =info
 test.txt:
