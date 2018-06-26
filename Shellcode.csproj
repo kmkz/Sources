@@ -7,7 +7,7 @@
   <!-- To execute your own shellcode, you first need to generate one using MSFVENOM: -->
   <!--     msfvenom -p <payload to use>  -e <encoder (optional)>  -f ps1 (could also be done with csharp or powershell) -->
   <!-- Adapt the XML below with your shellcode and adapt payload's length in buffer allocation-->
-  <!-- Execution: C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe Shellcode.cs -->
+  <!-- Execution: C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe Shellcode.csproj -->
 	
   <!-- Payload generation tool: https://github.com/Mr-Un1k0d3r/PowerLessShell -->
 	
