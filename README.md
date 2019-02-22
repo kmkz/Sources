@@ -1,21 +1,21 @@
 Sources
 =======
 
-Here you can find any sources in any languages..
-
-and a JOP project named "Msfrop_Enhanced" which is an msfrop tool evolution.
+Repository that contains random but useful sources.
 
 
-About Msfrop_Enhanced project
-=============================
+
+
+
+About Msfrop_Enhanced project (old)
+===================================
 
 Msfrop-Enhanced is a msfrop by Offensive Security with Jump Oriented Programming implementation.
 This tool is optimized for JOP gadgets hunting and will be improved when time permits me.
 
 Don't hesitate to contact me for any idea or problems.
 
-										 [Change log]
-
+ [Change log]
 
 *1.0*: Added JoP gadget research  (July 2014)
 
@@ -23,18 +23,7 @@ Don't hesitate to contact me for any idea or problems.
 
 *1.2*: Basic dispatcher (add + jmp) gadget research and optimisations (August 2015)
 
-			
-											[Todo]	
-
--Advanced dispatcher gadget hunting (next version)
-
--Stack pivoting gadgets (next version)
-
--Many things & ameliorations..
-
-
-										[How to use it]
-
+ [How to use it]
 
 To add Msfrop_Enhanced with a symbolic link:
 
