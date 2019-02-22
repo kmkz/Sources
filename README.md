@@ -1,7 +1,7 @@
 Sources
 =======
 
-Repository that contains random but useful sources.
+Repository that contains random but useful source codes.
 
 
 
