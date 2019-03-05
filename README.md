@@ -19,9 +19,11 @@ Don't hesitate to contact me for any idea or problems.
 Changelog
 ------
 
-*1.0*: Added JoP gadget research  (July 2014)
-*1.1*: Jump Far (jmpf) support, Initializer gadget research, call gadgets optimisations (November 2014)
-*1.2*: Basic dispatcher (add + jmp) gadget research and optimisations (August 2015)
+**1.0**: Added JoP gadget research  (July 2014)
+
+**1.1**: Jump Far (jmpf) support, Initializer gadget research, call gadgets optimisations (November 2014)
+
+**1.2**: Basic dispatcher (add + jmp) gadget research and optimisations (August 2015)
 
 
 Usage
