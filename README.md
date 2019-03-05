@@ -15,9 +15,9 @@ This tool is optimized for JOP gadgets hunting and will be improved when time pe
 
 Don't hesitate to contact me for any idea or problems.
 
-```
+
 Change log
-```
+------
 
 *1.0*: Added JoP gadget research  (July 2014)
 *1.1*: Jump Far (jmpf) support, Initializer gadget research, call gadgets optimisations (November 2014)
