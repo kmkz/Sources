@@ -1,14 +1,17 @@
 Sources
 =======
 
-Repository that contains random but useful source codes for offensive security stuff.
+Repository that contains random but (sometimes) useful source codes for offensive security stuff.
 
 
 
 
 
-**Msfrop_Enhanced project**
 
+
+
+
+**Msfrop_Enhanced**
 Msfrop-Enhanced is a msfrop by Offensive Security with Jump Oriented Programming implementation.
 This tool is optimized for JOP gadgets hunting and will be improved when time permits me.
 
