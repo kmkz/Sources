@@ -1,23 +1,20 @@
 Sources
 =======
 
-Repository that contains random but useful source codes.
+Repository that contains random but useful source codes for offensive security stuff.
 
 
 
 
 
 About Msfrop_Enhanced project
-===================================
+------
 
 Msfrop-Enhanced is a msfrop by Offensive Security with Jump Oriented Programming implementation.
 This tool is optimized for JOP gadgets hunting and will be improved when time permits me.
 
-Don't hesitate to contact me for any idea or problems.
-
-
 Changelog
-------
+
 
 **1.0**: Added JoP gadget research  (July 2014)
 
@@ -27,13 +24,10 @@ Changelog
 
 
 Usage
-------
-
 To add Msfrop_Enhanced with a symbolic link:
 ln -s /opt/metasploit/apps/pro/msf3/Msfrop_Enhanced /usr/bin/Msfrop_Enhanced
 
 You also can copy it as follow:
-
 cp Msfrop_Enhanced /usr/share/metasploit-framework/Msfrop_Enhanced 
 cp /usr/share/metasploit-framework/Msfrop_Enhanced /usr/bin/Msfrop_Enhanced 
 
