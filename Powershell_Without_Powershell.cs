@@ -9,11 +9,9 @@ public class Program
 {
     public static void Main()
     {
-
         PowerShell ps1 = PowerShell.Create();
         ps1.AddScript("Start-Process calc.exe");
         ps1.Invoke();
-
 
         PowerShell ps2 = PowerShell.Create();
         ps2.AddCommand("Get-Process");
@@ -25,7 +23,5 @@ public class Program
                 Console.WriteLine(outputItem);
             }
         }
-
-
     }
 }
