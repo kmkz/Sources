@@ -1,5 +1,9 @@
 package main
 
+// perform wmi code execution using NamedPipe 
+// store output in HKLM/CU/PoC
+// + 2 r/w primitives for interactive shell
+
 import (
 	"fmt"
 	"time"
@@ -16,12 +20,9 @@ func main() {
 		fmt.Println("ERROR:", err)
 		return
 	}
-
-	fmt.Println("----- OUTPUT FROM REGISTRY -----")
-	fmt.Println(out)
 }
 
-// execWMIAndStore
+// execWMIAndStore output using NamedPipe
 func execWMIAndStore(cmd string) (string, error) {
 	pipeName := fmt.Sprintf(`\\.\pipe\poc_%d`, time.Now().UnixNano())
 
